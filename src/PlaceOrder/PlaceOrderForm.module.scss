@@ -1,0 +1,35 @@
+.root {
+  $side-padding: 10px;
+
+  background-color: #231f30;
+
+  .header {
+    background-color: #2B273B;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 0.4px;
+    padding: 10px $side-padding;
+    margin-bottom: 15px;
+  }
+
+  .closeIcon {
+    padding: 0;
+    color: rgba(255, 255, 255, 0.5);
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  .content {
+    padding: 0 $side-padding 13px;
+    display: grid;
+    row-gap: 8px;
+  }
+
+  .takeProfit {
+    //margin: 0 -10px;
+  }
+}

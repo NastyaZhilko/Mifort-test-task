@@ -1,0 +1,44 @@
+.root {
+  width: 100%;
+
+  .input {
+    color: #fff;
+    font-size: 14px;
+    padding: 0;
+  }
+
+  .inputWrapper {
+    font-size: 12px;
+    border-radius: 0;
+    border-bottom: 1px solid transparent;
+    background-color: transparent;
+    color: rgba(255,255,255,.5);
+    padding: 6px 0 7px;
+
+    &:hover {
+      border-color: #0078ff;
+      background-color: transparent;
+    }
+
+    &.focused:not(input) {
+      border-color: #0078ff;
+    }
+
+    &.adornedEnd {
+      padding-right: 9px;
+    }
+
+    &.adornedStart {
+      padding-left: 9px;
+    }
+
+    &.error {
+      color: #f44336;
+      border-color: #ff4114 !important;
+
+      .input {
+        color: #f44336;
+      }
+    }
+  }
+}

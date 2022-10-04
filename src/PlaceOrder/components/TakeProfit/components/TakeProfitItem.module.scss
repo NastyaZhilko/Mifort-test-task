@@ -1,0 +1,47 @@
+.container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 69px 117px 78px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  padding-top: 22px;
+  .profitInput {
+    padding-right: 25px;
+  }
+
+  .targetPriceInput {
+    padding-right: 21px;
+  }
+
+  .amountInput {
+    padding-right: 15px;
+  }
+
+  .removeProfitItem {
+    color: #393644;
+    padding: 0;
+    float: right;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      }
+    &:hover{
+      color: #8f8e96;
+    }
+  }
+
+  label {
+    color: rgba(255, 255, 255, 0.5) !important;
+    top: -29px;
+    left: -12px;
+    white-space: nowrap;
+    font-family: 'SF Pro Display', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 14px;
+    letter-spacing: 0.25px;
+
+  }
+
+}

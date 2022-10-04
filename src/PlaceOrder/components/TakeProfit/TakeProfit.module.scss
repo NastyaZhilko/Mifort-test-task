@@ -1,0 +1,61 @@
+.container {
+  font-family: "SF Pro Display", sans-serif;
+  font-weight: 400;
+  display: grid;
+  grid-row-gap: 8px;
+  row-gap: 8px;
+
+  .header {
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .tooltip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      line-height: 18px;
+      color: #FFFFFF;
+    }
+  }
+
+  .takeProfitItems {
+    display: grid;
+    grid-row-gap: 8px;
+    row-gap: 8px;
+  }
+
+  .addProfit {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+
+    button {
+      font-size: 15px;
+      line-height: 14px;
+      letter-spacing: 0;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      margin-right: 5px;
+    }
+  }
+
+  .projectedProfit {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    letter-spacing: 0;
+
+    .result {
+      color: #ffffff
+    }
+  }
+}
