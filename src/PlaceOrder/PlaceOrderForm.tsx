@@ -21,7 +21,8 @@ export const PlaceOrderForm = observer(() => {
     setPrice,
     setAmount,
     setTotal,
-    setOrderSide
+    setOrderSide,
+    validateTakeProfits
   } = useStore();
 
   return (
@@ -41,26 +42,23 @@ export const PlaceOrderForm = observer(() => {
         </div>
         <div className={styles.price}>
           <NumberInput
-            label="Price"
+            label="Price, USDT"
             value={price}
             onChange={(value) => setPrice(Number(value))}
-            InputProps={{ endAdornment: QUOTE_CURRENCY }}
           />
         </div>
         <div className={styles.amount}>
           <NumberInput
             value={amount}
-            label="Amount"
+            label="Amount, BTC"
             onChange={(value) => setAmount(Number(value))}
-            InputProps={{ endAdornment: BASE_CURRENCY }}
           />
         </div>
         <div className={styles.total}>
           <NumberInput
             value={total}
-            label="Total"
+            label="Total, USDT"
             onChange={(value) => setTotal(Number(value))}
-            InputProps={{ endAdornment: QUOTE_CURRENCY }}
           />
         </div>
         <div className={styles.takeProfit}>
@@ -71,6 +69,10 @@ export const PlaceOrderForm = observer(() => {
             color={activeOrderSide === "buy" ? "green" : "red"}
             type="submit"
             fullWidth
+            onClick={(event) => {
+              event.preventDefault();
+              validateTakeProfits();
+            }}
           >
             {activeOrderSide === "buy"
               ? `Buy ${BASE_CURRENCY}`

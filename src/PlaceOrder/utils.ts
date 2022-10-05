@@ -55,16 +55,16 @@ export const calculateProjectedProfit = (
         : order.amount * (price - order.targetPrice) / 100);
 }, 0)
 
-export const validateTakeProfitOrders = (
-    currentOrders: ProfitItem[],
+export const validateTakeProfitItems = (
+    currentProfitItems: ProfitItem[],
 ) => {
     let totalAmount = 0;
-    let totalProfit = currentOrders.reduce((acc, order) => {
-        totalAmount += order.amount;
-        return acc + order.profit;
+    let totalProfit = currentProfitItems.reduce((acc, item) => {
+        totalAmount += item.amount;
+        return acc + item.profit;
     }, 0);
 
-    return currentOrders.map((order, index) => {
+    return currentProfitItems.map((item, index) => {
         const errorObj: ProfitItem['errors'] = {};
         if (totalProfit > 500) {
             errorObj.profit = 'Maximum profit sum is 500%';
@@ -72,17 +72,17 @@ export const validateTakeProfitOrders = (
         if (totalAmount > 100) {
             errorObj.amount = `${totalAmount} out of 100% selected. Please decrease by ${(100 - totalAmount) * -1}`;
         }
-        if (index && currentOrders[index - 1].profit >= order.profit) {
+        if (index && currentProfitItems[index - 1].profit >= item.profit) {
             errorObj.profit = "Each target's profit should be greater than the previous one";
         }
-        if (order.profit < 0.01) {
+        if (item.profit < 0.01) {
             errorObj.profit = 'Minimum value is 0.01';
         }
-        if (order.targetPrice <= 0) {
+        if (item.targetPrice <= 0) {
             errorObj.targetPrice = 'Price must be greater than 0';
         }
         return {
-            ...order,
+            ...item,
             errors: errorObj,
         };
     })
@@ -97,34 +97,34 @@ export const recalculateTakeProfit = (
 }));
 
 
-export const onTakeProfitOrderFieldBlur = (
-    currentOrders: ProfitItem[],
-    choosenOrderId: string,
+export const onTakeProfitItemFieldBlur = (
+    currentItems: ProfitItem[],
+    choosenItmId: string,
     changedField: keyof Pick<ProfitItem, "profit" | "targetPrice">,
     price: number,
-) => currentOrders.map((order) => {
-    if (order.id !== choosenOrderId) {
+) => currentItems.map((item) => {
+    if (item.id !== choosenItmId) {
         return {
-            ...order,
+            ...item,
             errors: undefined,
         };
     }
     switch (changedField) {
         case 'profit':
             return {
-                ...order,
-                targetPrice: price + price * (order.profit / 100),
+                ...item,
+                targetPrice: price + price * (item.profit / 100),
                 errors: undefined,
             };
         case 'targetPrice':
             return {
-                ...order,
-                profit: (order.targetPrice - price) / (price || 1) * 100,
+                ...item,
+                profit: (item.targetPrice - price) / (price || 1) * 100,
                 errors: undefined,
             };
         default:
             return {
-                ...order,
+                ...item,
                 errors: undefined,
             };
     }

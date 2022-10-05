@@ -17,7 +17,8 @@ type Props = ProfitItem & {
     onFieldBlur: (
         id: string,
         changedField: keyof Pick<ProfitItem, "profit" | "targetPrice">,
-    ) => void;
+    ) => void,
+    activeOrderSide: string
 }
 const TakeProfitItem = React.memo<Props>(({
                                               id,
@@ -27,28 +28,30 @@ const TakeProfitItem = React.memo<Props>(({
                                               errors,
                                               onFieldChange,
                                               onRemoveProfitItem,
-                                              onFieldBlur
-                                          }) => {
+                                              onFieldBlur,
+                                              activeOrderSide
+                                          }: Props) => {
 
     const handleFieldChange = (fieldName: keyof Omit<ProfitItem, "id">) => (newValue: number | null) => {
         onFieldChange(id, fieldName, newValue ?? 0);
     };
 
+    const labelInputAmount = activeOrderSide === "buy" ? "Amount to sell" : "Amount to buy"
+
     return <div className={styles.container}>
         <div className={styles.profitInput}>
-            <NumberInput
-                label="Profit"
-                variant="underlined"
-                value={profit}
-                onChange={handleFieldChange("profit")}
-                onBlur={() => onFieldBlur(id, "profit")}
-                decimalScale={2}
-                InputProps={{endAdornment: PERCENT}}
-                error={errors?.profit}
-            />
+                <NumberInput
+                    label="Profit"
+                    variant="underlined"
+                    value={profit}
+                    onChange={handleFieldChange("profit")}
+                    onBlur={() => onFieldBlur(id, "profit")}
+                    decimalScale={2}
+                    InputProps={{endAdornment: PERCENT}}
+                    error={errors?.profit}
+                />
         </div>
         <div className={styles.targetPriceInput}>
-
             <NumberInput
                 label="Target price"
                 variant="underlined"
@@ -63,7 +66,7 @@ const TakeProfitItem = React.memo<Props>(({
         </div>
         <div className={styles.amountInput}>
             <NumberInput
-                label="Amount to buy"
+                label={labelInputAmount}
                 variant="underlined"
                 value={amount}
                 onChange={handleFieldChange("amount")}

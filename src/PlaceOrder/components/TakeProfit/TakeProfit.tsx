@@ -19,7 +19,8 @@ const TakeProfit = observer(() => {
         projectedProfit,
         changeTakeProfitItem,
         removeProfitItem,
-        handleBlurTakeProfitField
+        handleBlurTakeProfitField,
+        activeOrderSide
     } = useStore()
 
     const onFieldChange = React.useCallback((
@@ -62,6 +63,7 @@ const TakeProfit = observer(() => {
                             onFieldChange={onFieldChange}
                             onRemoveProfitItem={onRemoveProfitItem}
                             onFieldBlur={onFieldBlur}
+                            activeOrderSide={activeOrderSide}
                         />)}
                 </div>
                 {profitList.length !== MAX_COUNT_PROFIT &&

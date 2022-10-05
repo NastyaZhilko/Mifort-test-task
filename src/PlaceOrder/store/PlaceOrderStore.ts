@@ -4,9 +4,9 @@ import {OrderSide, ProfitItem} from "../model";
 import {
     addProfitItem,
     calculateProjectedProfit,
-    onTakeProfitOrderFieldBlur,
+    onTakeProfitItemFieldBlur,
     recalculateTakeProfit,
-    validateTakeProfitOrders
+    validateTakeProfitItems
 } from "../utils";
 
 
@@ -71,17 +71,17 @@ export class PlaceOrderStore {
 
     @action.bound
     public validateTakeProfits() {
-        this.profitList = validateTakeProfitOrders(this.profitList);
+        this.profitList = validateTakeProfitItems(this.profitList);
     }
 
     @action.bound
     public handleBlurTakeProfitField(
-        choosenOrderId: string,
+        choosenItemId: string,
         changedField: keyof Pick<ProfitItem, "profit" | "targetPrice">,
     ) {
-        this.profitList = onTakeProfitOrderFieldBlur(
+        this.profitList = onTakeProfitItemFieldBlur(
             this.profitList,
-            choosenOrderId,
+            choosenItemId,
             changedField,
             this.price,
         );
