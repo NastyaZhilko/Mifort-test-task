@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Mifort-test-task/static/css/main.8058c3f2.chunk.css",
+    "main.js": "/Mifort-test-task/static/js/main.ea4bffc2.chunk.js",
+    "main.js.map": "/Mifort-test-task/static/js/main.ea4bffc2.chunk.js.map",
+    "runtime-main.js": "/Mifort-test-task/static/js/runtime-main.20f8e515.js",
+    "runtime-main.js.map": "/Mifort-test-task/static/js/runtime-main.20f8e515.js.map",
+    "static/js/2.ca0060ef.chunk.js": "/Mifort-test-task/static/js/2.ca0060ef.chunk.js",
+    "static/js/2.ca0060ef.chunk.js.map": "/Mifort-test-task/static/js/2.ca0060ef.chunk.js.map",
+    "index.html": "/Mifort-test-task/index.html",
+    "static/css/main.8058c3f2.chunk.css.map": "/Mifort-test-task/static/css/main.8058c3f2.chunk.css.map",
+    "static/js/2.ca0060ef.chunk.js.LICENSE.txt": "/Mifort-test-task/static/js/2.ca0060ef.chunk.js.LICENSE.txt",
+    "static/media/info.78f6d58a.svg": "/Mifort-test-task/static/media/info.78f6d58a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.20f8e515.js",
+    "static/js/2.ca0060ef.chunk.js",
+    "static/css/main.8058c3f2.chunk.css",
+    "static/js/main.ea4bffc2.chunk.js"
+  ]
+}
